@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONKHEGECOIN — $STONKHEGE</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --acid: #CCFF00;
+    --acid-dim: #a3cc00;
+    --void: #050505;
+    --void-2: #0a0a0a;
+    --void-3: #111;
+    --txt: #d4d4d4;
+    --muted: #666;
+    --danger: #ff2a2a;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--txt);
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(10,255,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10,255,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 3px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  a { color: var(--acid); text-decoration: none; }
+  a:hover { text-shadow: 0 0 8px var(--acid); }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #1f1f1f;
+  }
+  .brand {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--acid);
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    margin-left: 22px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+  }
+  .mascot {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 28px;
+    border: 2px solid var(--acid);
+    box-shadow: 0 0 40px rgba(204,255,0,0.25);
+    animation: pulse-glow 3s infinite;
+    display: block;
+  }
+  @keyframes pulse-glow {
+    0%,100% { box-shadow: 0 0 30px rgba(204,255,0,0.2); }
+    50% { box-shadow: 0 0 60px rgba(204,255,0,0.45); }
+  }
+  .hero h1 {
+    font-size: clamp(48px, 10vw, 96px);
+    line-height: 0.95;
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1::before, .hero h1::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0.6;
+  }
+  .hero h1::before {
+    color: #0ff;
+    animation: glitch 2s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  }
+  .hero h1::after {
+    color: var(--danger);
+    animation: glitch 2.5s infinite reverse;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  }
+  @keyframes glitch {
+    0%,100% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(3px, -3px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+  }
+  .tagline {
+    margin-top: 18px;
+    font-size: 18px;
+    color: var(--txt);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .desc {
+    margin-top: 14px;
+    max-width: 640px;
+    margin-left: auto; margin-right: auto;
+    color: #888;
+    font-size: 14px;
+  }
+  .cta-row {
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: var(--acid);
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(204,255,0,0.35);
+  }
+  .btn.ghost {
+    background: transparent;
+    color: var(--acid);
+    border: 1px solid var(--acid);
+    box-shadow: none;
+  }
+  .btn.ghost:hover {
+    background: rgba(204,255,0,0.08);
+    box-shadow: 0 0 14px rgba(204,255,0,0.2);
+  }
+
+  /* TICKER */
+  .ticker {
+    border-top: 1px solid #1f1f1f;
+    border-bottom: 1px solid #1f1f1f;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--void-2);
+    position: relative;
+    z-index: 1;
+  }
+  .ticker-wrap {
+    display: inline-block;
+    animation: tick 28s linear infinite;
+  }
+  .ticker-wrap span {
+    color: var(--acid);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-right: 40px;
+    text-transform: uppercase;
+  }
+  @keyframes tick {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 0;
+    border-bottom: 1px solid #161616;
+  }
+  .section-title {
+    font-size: 28px;
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    color: #777;
+    margin-bottom: 32px;
+    font-size: 13px;
+    max-width: 560px;
+  }
+
+  /* MANIFESTO */
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .manifesto-block {
+    background: var(--void-2);
+    border: 1px solid #222;
+    padding: 24px;
+    position: relative;
+  }
+  .manifesto-block::before {
+    content: ">";
+    position: absolute;
+    top: 18px; left: 12px;
+    color: var(--acid);
+    opacity: 0.4;
+  }
+  .manifesto-block h3 {
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .manifesto-block p {
+    color: #999;
+    font-size: 14px;
+  }
+
+  /* TOKENOMICS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .stat {
+    background: var(--void-2);
+    border: 1px solid #222;
+    padding: 24px;
+    text-align: center;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+    text-transform: uppercase;
+  }
+  .stat-value {
+    font-size: 28px;
+    color: var(--acid);
+    margin-top: 6px;
+    font-weight: 700;
+  }
+  .stat-meta {
+    font-size: 11px;
+    color: #555;
+    margin-top: 4px;
+  }
+
+  .liquidity-box {
+    margin-top: 20px;
+    background: var(--void-2);
+    border: 1px solid #222;
+    padding: 18px;
+    text-align: center;
+  }
+  .liquidity-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    mask-image: linear-gradient(black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(black 80%, transparent 100%);
+  }
+
+  /* HOW TO BUY */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .step {
+    position: relative;
+    padding: 22px;
+    background: var(--void-2);
+    border: 1px solid #222;
+  }
+  .step-num {
+    font-size: 52px;
+    color: #222;
+    font-weight: 900;
+    line-height: 1;
+    position: absolute;
+    top: 10px; right: 14px;
+  }
+  .step-title {
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .step p {
+    color: #888;
+    font-size: 13px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* MEMES */
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .meme-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid #222;
+    background: var(--void-2);
+    filter: grayscale(20%) contrast(110%);
+    transition: filter 0.2s;
+  }
+  .meme-grid img:hover {
+    filter: grayscale(0%) contrast(120%);
+  }
+
+  /* CONTRACT */
+  .terminal-box {
+    background: var(--void-2);
+    border: 1px solid var(--acid);
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(204,255,0,0.08);
+  }
+  .terminal-box::before {
+    content: "root@stonkhege:~$ cat ca.txt";
+    display: block;
+    color: var(--acid);
+    font-size: 12px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .ca-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .ca {
+    font-size: 14px;
+    color: var(--txt);
+    word-break: break-all;
+  }
+  .copy-btn {
+    background: transparent;
+    color: var(--acid);
+    border: 1px solid var(--acid);
+    padding: 8px 12px;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .copy-btn:hover {
+    background: rgba(204,255,0,0.1);
+  }
+
+  /* LIVE CHART */
+  .chart-frame {
+    border: 1px solid #222;
+    background: var(--void-2);
+    padding: 14px;
+  }
+  .chart-placeholder {
+    text-align: center;
+    padding: 40px 0;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  footer {
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #161616;
+    color: #555;
+    font-size: 12px;
+    letter-spacing: 1px;
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .manifesto-grid, .stats-grid, .steps, .meme-grid { grid-template-columns: 1fr; }
+    .hero { padding: 50px 0 40px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="brand">STONKHEGECOIN</div>
+    <div class="nav-links">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#buy">Buy</a>
+      <a href="#memes">Memes</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img class="mascot" src="https://unavatar.io/x/stonkhegecoin" alt="STONKHEGE mascot" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23050505%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22120%22 text-anchor=%22middle%22 fill=%22%23CCFF00%22 font-family=%22monospace%22 font-size=%2220%22>STONKHEGE</text></svg>';">
+    <h1 data-text="STONKHEGECOIN">STONKHEGECOIN</h1>
+    <div class="tagline">We don't follow pumps. We are the pump.</div>
+    <p class="desc">STONKHEGECOIN is where stonk energy meets hege conviction. built for the on-chain schizo, deployed with zero overhead, and allergic to red candles.</p>
+    <div class="cta-row">
+      <a class="btn" href="#" id="buyBtn">Buy Now</a>
+      <a class="btn ghost" href="#" id="chartBtn">Live Chart ↗</a>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <div class="ticker-wrap" id="ticker">
+      <span>◆ STONKHEGECOIN</span>
+      <span>HEGE MODE: ACTIVE</span>
+      <span>GREEN ONLY</span>
+      <span>ZERO TAX</span>
+      <span>100% LP BURNED</span>
+      <span>NO RUG</span>
+      <span>STONKHEGE TO THE VOID</span>
+      <span>◆ STONKHEGECOIN</span>
+      <span>HEGE MODE: ACTIVE</span>
+      <span>GREEN ONLY</span>
+      <span>ZERO TAX</span>
+      <span>100% LP BURNED</span>
+      <span>NO RUG</span>
+      <span>STONKHEGE TO THE VOID</span>
+    </div>
+  </div>
+
+  <section id="manifesto">
+    <h2 class="section-title">Manifesto</h2>
+    <p class="section-sub">Not a team. Not a roadmap. Just a signal in the noise.</p>
+    <div class="manifesto-grid">
+      <div class="manifesto-block">
+        <h3>STONK</h3>
+        <p>Brainrot charts, W pattern enlightenment, and the kind of conviction that only comes after staring at TradingView until 4am. This is the thesis.</p>
+      </div>
+      <div class="manifesto-block">
+        <h3>HEGE</h3>
+        <p>Protection. Defense. The ability to not get absolutely wrecked when the market decides to be a gambling addict with no sleep. We position, we survive.</p>
+      </div>
+      <div class="manifesto-block">
+        <h3>COIN</h3>
+        <p>The final form. On-chain, borderless, and engineered to outlive every exchange meltdown and influencer rug. One token. One bet on chaos itself.</p>
+      </div>
+      <div class="manifesto-block">
+        <h3>RESULT</h3>
+        <p>STONKHEGECOIN — pure speculative energy wrapped in digital absurdity. If it pumps, we pumped. If it dumps, we hedged. There is no middle ground.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="memes">
+    <h2 class="section-title">Feed</h2>
+    <p class="section-sub">Visual evidence of the thesis.</p>
+    <div class="meme-grid">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege bullish">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege moon">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege aim">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege coins">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege shield">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege face">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege leap">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege gear">
+    </div>
+    <p style="margin-top: 12px; color: #555; font-size: 12px;">[ mint real artwork later — using placeholder pfp for now ]</p>
+  </section>
+
+  <section id="tokenomics">
+    <h2 class="section-title">Tokenomics</h2>
+    <p class="section-sub">Numbers don't lie. The chart does.</p>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-label">Ticker</div>
+        <div class="stat-value">$STONKHEGE</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Total Supply</div>
+        <div class="stat-value">1B</div>
+        <div class="stat-meta">1,000,000,000</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Tax</div>
+        <div class="stat-value">0 / 0</div>
+        <div class="stat-meta">Buy / Sell</div>
+      </div>
+    </div>
+    <div class="liquidity-box">
+      <div class="stat-label" style="text-align:center;">Liquidity</div>
+      <div style="text-align:center; margin-top: 10px; color: var(--acid); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">100% BURNED</div>
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Liquidity" style="opacity: 0.6;">
+    </div>
+  </section>
+
+  <section id="buy">
+    <h2 class="section-title">How to Buy</h2>
+    <p class="section-sub">Four steps to maximum brainrot gainz.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Get a Wallet</div>
+        <p>Set up MetaMask or any Web3 wallet. Keep your seed phrase in a safe. Do not post it on X.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Add Network</div>
+        <p>Switch to Robinhood Chain (chain id not shown here). Fund wallet with ETH for gas and swaps.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Open Swap</div>
+        <p>Buy Now or hit Uniswap directly. Connect wallet and paste the official STONKHEGE contract below.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Swap & Survive</div>
+        <p>Choose your size, confirm the tx, and watch the candles. Green is the only acceptable color.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contract">
+    <h2 class="section-title">Contract</h2>
+    <p class="section-sub">Always verify before you ape.</p>
+    <div class="terminal-box">
+      <div class="ca-line">
+        <code class="ca" id="caText">YOUR_CONTRACT_ADDRESS_HERE</code>
+        <button class="copy-btn" onclick="copyCA()">Copy CA</button>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top: 20px;">
+      <a class="btn" href="#" id="buyBtn2">Buy Now</a>
+      <a class="btn ghost" href="#" id="chartBtn2">Live Chart ↗</a>
+    </div>
+  </section>
+
+  <section id="chart">
+    <h2 class="section-title">Live Feed</h2>
+    <p class="section-sub">On-chain chart. No filters. No excuses.</p>
+    <div class="chart-frame">
+      <div class="chart-placeholder" id="chartPlaceholder">
+        <div>[ DexScreener embed loads after contract is live ]</div>
+        <div style="margin-top: 8px; font-size: 12px; color: #444;">paste contract in _config or replace iframe below</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    STONKHEGECOIN ◆ NOT FINANCIAL ADVICE ◆ NO TAX ◆ NO RUG ◆ GREEN ONLY ◆ STONKHEGE TO THE VOID
+  </footer>
+</div>
+
+<script>
+  // Replace placeholder CA manually or via build step before deploying
+  const CONTRACT = "YOUR_CONTRACT_ADDRESS_HERE";
+  const UNISWAP_URL = "https://app.uniswap.org/swap?chain=robinhood&outputCurrency=" + CONTRACT;
+  const DEX_URL = "https://dexscreener.com/robinhood/" + CONTRACT;
+
+  function setCA() {
+    if (CONTRACT && CONTRACT !== "YOUR_CONTRACT_ADDRESS_HERE") {
+      document.getElementById("caText").textContent = CONTRACT;
+      document.getElementById("chartPlaceholder").innerHTML =
+        '<iframe src="' + DEX_URL + '" style="width:100%; height:420px; border:none; background:#0a0a0a;"></iframe>';
+    }
+  }
+  function copyCA() {
+    const el = document.getElementById("caText");
+    const text = el.textContent;
+    if (!text || text === "YOUR_CONTRACT_ADDRESS_HERE") return alert("Set contract address first.");
+    navigator.clipboard.writeText(text).then(() => alert("CA copied."));
+  }
+  function bind(id, url) {
+    const el = document.getElementById(id);
+    if (el) el.href = url;
+  }
+  bind("buyBtn", UNISWAP_URL);
+  bind("buyBtn2", UNISWAP_URL);
+  bind("chartBtn", DEX_URL);
+  bind("chartBtn2", DEX_URL);
+  setCA();
+</script>
+</body>
+</html>
