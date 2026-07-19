@@ -3,53 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STONKHEGECOIN — $STONKHEGE</title>
+<title>STONKHEGECOIN | $STONKHEGE</title>
+<meta name="description" content="STONKHEGECOIN - The ultimate stonk meets hege memecoin. Buy on Uniswap. Join the community.">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --acid: #CCFF00;
-    --acid-dim: #a3cc00;
-    --void: #050505;
-    --void-2: #0a0a0a;
+    --neon: #CCFF00;
+    --neon-dark: #a3cc00;
+    --void: #000;
+    --void-2: #080808;
     --void-3: #111;
-    --txt: #d4d4d4;
-    --muted: #666;
+    --txt: #fff;
+    --muted: #999;
     --danger: #ff2a2a;
+    --warning: #ffaa00;
   }
   html { scroll-behavior: smooth; }
   body {
     background: var(--void);
     color: var(--txt);
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.4;
     overflow-x: hidden;
-    position: relative;
   }
   body::before {
     content: "";
     position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(10,255,0,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(10,255,0,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background:
+      linear-gradient(rgba(204,255,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,255,0,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
     pointer-events: none;
     z-index: 0;
   }
-  body::after {
-    content: "";
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 3px);
-    pointer-events: none;
-    z-index: 2;
-  }
 
-  a { color: var(--acid); text-decoration: none; }
-  a:hover { text-shadow: 0 0 8px var(--acid); }
+  a { color: var(--neon); text-decoration: none; transition: all 0.2s; }
+  a:hover { text-shadow: 0 0 10px var(--neon); filter: brightness(1.2); }
 
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 0 20px;
     position: relative;
     z-index: 1;
   }
@@ -59,150 +53,155 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 0;
-    border-bottom: 1px solid #1f1f1f;
+    padding: 16px 0;
+    border-bottom: 2px solid var(--neon);
+    background: linear-gradient(180deg, rgba(204,255,0,0.05) 0%, transparent 100%);
   }
   .brand {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 900;
     letter-spacing: 2px;
-    color: var(--acid);
+    color: var(--neon);
     text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(204,255,0,0.4);
   }
   .nav-links a {
-    margin-left: 22px;
-    font-size: 13px;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    padding: 6px 12px;
+    border: 1px solid var(--neon);
+    background: rgba(204,255,0,0.05);
+    transition: all 0.2s;
+  }
+  .nav-links a:hover {
+    background: var(--neon);
+    color: #000;
+    box-shadow: 0 0 20px rgba(204,255,0,0.5);
   }
 
   /* HERO */
   .hero {
-    padding: 80px 0 60px;
+    padding: 60px 0 40px;
     text-align: center;
     position: relative;
+    background: radial-gradient(circle at 50% 30%, rgba(204,255,0,0.1) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--neon);
+    color: #000;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.6; }
   }
   .mascot {
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0 auto 28px;
-    border: 2px solid var(--acid);
-    box-shadow: 0 0 40px rgba(204,255,0,0.25);
-    animation: pulse-glow 3s infinite;
+    margin: 0 auto 24px;
+    border: 4px solid var(--neon);
+    box-shadow:
+      0 0 0 2px #000,
+      0 0 60px rgba(204,255,0,0.5),
+      inset 0 0 40px rgba(204,255,0,0.2);
+    animation: rotate-glow 4s infinite linear;
     display: block;
+    background: #000;
   }
-  @keyframes pulse-glow {
-    0%,100% { box-shadow: 0 0 30px rgba(204,255,0,0.2); }
-    50% { box-shadow: 0 0 60px rgba(204,255,0,0.45); }
+  @keyframes rotate-glow {
+    0% { box-shadow: 0 0 60px rgba(204,255,0,0.5), inset 0 0 40px rgba(204,255,0,0.2); }
+    50% { box-shadow: 0 0 100px rgba(204,255,0,0.8), inset 0 0 60px rgba(204,255,0,0.35); }
+    100% { box-shadow: 0 0 60px rgba(204,255,0,0.5), inset 0 0 40px rgba(204,255,0,0.2); }
   }
   .hero h1 {
-    font-size: clamp(48px, 10vw, 96px);
-    line-height: 0.95;
-    color: var(--acid);
+    font-size: clamp(56px, 12vw, 120px);
+    line-height: 0.9;
+    color: var(--neon);
     text-transform: uppercase;
     letter-spacing: -2px;
-    position: relative;
-    display: inline-block;
+    text-shadow: 4px 4px 0 #000, 0 0 30px rgba(204,255,0,0.4);
+    margin-bottom: 10px;
   }
-  .hero h1::before, .hero h1::after {
-    content: attr(data-text);
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.6;
-  }
-  .hero h1::before {
-    color: #0ff;
-    animation: glitch 2s infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
-  }
-  .hero h1::after {
-    color: var(--danger);
-    animation: glitch 2.5s infinite reverse;
-    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-  }
-  @keyframes glitch {
-    0%,100% { transform: translate(0); }
-    20% { transform: translate(-3px, 3px); }
-    40% { transform: translate(3px, -3px); }
-    60% { transform: translate(-2px, -2px); }
-    80% { transform: translate(2px, 2px); }
+  .ticker-big {
+    font-size: 32px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    word-break: break-all;
   }
   .tagline {
-    margin-top: 18px;
-    font-size: 18px;
-    color: var(--txt);
+    font-size: 20px;
+    color: #fff;
     letter-spacing: 3px;
     text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 12px;
   }
   .desc {
-    margin-top: 14px;
-    max-width: 640px;
-    margin-left: auto; margin-right: auto;
-    color: #888;
-    font-size: 14px;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    color: #ccc;
+    font-size: 16px;
   }
-  .cta-row {
-    margin-top: 34px;
+  .socials {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 24px;
   }
-  .btn {
+  .social-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 24px;
-    background: var(--acid);
+    padding: 12px 20px;
+    background: var(--neon);
     color: #000;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 1px;
+    font-size: 14px;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: transform 0.15s;
   }
-  .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 24px rgba(204,255,0,0.35);
-  }
-  .btn.ghost {
-    background: transparent;
-    color: var(--acid);
-    border: 1px solid var(--acid);
-    box-shadow: none;
-  }
-  .btn.ghost:hover {
-    background: rgba(204,255,0,0.08);
-    box-shadow: 0 0 14px rgba(204,255,0,0.2);
-  }
+  .social-btn:hover { transform: translateY(-2px) scale(1.05); }
+  .social-btn.telegram { background: #26a5e4; color: #fff; }
+  .social-btn.discord { background: #5865f2; color: #fff; }
+  .social-btn.x { background: #000; color: #fff; border: 2px solid #fff; }
 
   /* TICKER */
   .ticker {
-    border-top: 1px solid #1f1f1f;
-    border-bottom: 1px solid #1f1f1f;
-    padding: 10px 0;
+    border-top: 2px solid var(--neon);
+    border-bottom: 2px solid var(--neon);
+    padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
-    background: var(--void-2);
-    position: relative;
-    z-index: 1;
+    background: var(--neon);
+    color: #000;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
   }
   .ticker-wrap {
     display: inline-block;
-    animation: tick 28s linear infinite;
+    animation: tick 25s linear infinite;
   }
-  .ticker-wrap span {
-    color: var(--acid);
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-right: 40px;
-    text-transform: uppercase;
-  }
+  .ticker-wrap span { margin-right: 50px; }
   @keyframes tick {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -210,395 +209,432 @@
 
   /* SECTIONS */
   section {
-    padding: 70px 0;
-    border-bottom: 1px solid #161616;
+    padding: 50px 0;
+    border-bottom: 1px solid #222;
   }
   .section-title {
-    font-size: 28px;
-    color: var(--acid);
+    font-size: 42px;
+    color: var(--neon);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 20px rgba(204,255,0,0.3);
   }
   .section-sub {
-    color: #777;
-    margin-bottom: 32px;
-    font-size: 13px;
-    max-width: 560px;
+    color: #ccc;
+    margin-bottom: 28px;
+    font-size: 16px;
   }
 
   /* MANIFESTO */
   .manifesto-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
   .manifesto-block {
     background: var(--void-2);
-    border: 1px solid #222;
+    border: 2px solid var(--neon);
     padding: 24px;
     position: relative;
+    transition: transform 0.2s;
+  }
+  .manifesto-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(204,255,0,0.2);
   }
   .manifesto-block::before {
-    content: ">";
+    content: "🦍";
+    font-size: 40px;
     position: absolute;
-    top: 18px; left: 12px;
-    color: var(--acid);
-    opacity: 0.4;
+    top: 12px;
+    right: 16px;
+    opacity: 0.2;
   }
   .manifesto-block h3 {
-    color: var(--acid);
+    color: var(--neon);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    font-size: 22px;
   }
   .manifesto-block p {
-    color: #999;
+    color: #ddd;
     font-size: 14px;
+  }
+
+  /* MEME GRID */
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .meme-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 2px solid var(--neon);
+    background: var(--void-2);
+    filter: grayscale(30%) contrast(110%);
+    transition: all 0.2s;
+  }
+  .meme-grid img:hover {
+    filter: grayscale(0%) contrast(120%);
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 0 30px rgba(204,255,0,0.4);
   }
 
   /* TOKENOMICS */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 20px;
   }
   .stat {
     background: var(--void-2);
-    border: 1px solid #222;
-    padding: 24px;
+    border: 2px solid var(--neon);
+    padding: 28px 20px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(204,255,0,0.05);
+    pointer-events: none;
   }
   .stat-label {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: #777;
+    color: #999;
     text-transform: uppercase;
+    margin-bottom: 8px;
   }
   .stat-value {
-    font-size: 28px;
-    color: var(--acid);
-    margin-top: 6px;
-    font-weight: 700;
+    font-size: 36px;
+    color: var(--neon);
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(204,255,0,0.3);
   }
   .stat-meta {
-    font-size: 11px;
-    color: #555;
+    font-size: 12px;
+    color: #777;
     margin-top: 4px;
-  }
-
-  .liquidity-box {
-    margin-top: 20px;
-    background: var(--void-2);
-    border: 1px solid #222;
-    padding: 18px;
-    text-align: center;
-  }
-  .liquidity-box img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    mask-image: linear-gradient(black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(black 80%, transparent 100%);
   }
 
   /* HOW TO BUY */
   .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
   .step {
     position: relative;
-    padding: 22px;
+    padding: 24px;
     background: var(--void-2);
-    border: 1px solid #222;
+    border: 2px solid var(--neon);
+    text-align: center;
   }
   .step-num {
-    font-size: 52px;
-    color: #222;
+    font-size: 64px;
+    color: var(--neon);
     font-weight: 900;
     line-height: 1;
     position: absolute;
-    top: 10px; right: 14px;
+    top: 8px;
+    right: 12px;
+    opacity: 0.15;
   }
   .step-title {
-    color: var(--acid);
+    color: var(--neon);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 14px;
-    margin-bottom: 6px;
+    font-size: 16px;
+    margin-bottom: 8px;
     position: relative;
     z-index: 1;
   }
   .step p {
-    color: #888;
+    color: #ccc;
     font-size: 13px;
     position: relative;
     z-index: 1;
   }
 
-  /* MEMES */
-  .meme-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
-  .meme-grid img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border: 1px solid #222;
-    background: var(--void-2);
-    filter: grayscale(20%) contrast(110%);
-    transition: filter 0.2s;
-  }
-  .meme-grid img:hover {
-    filter: grayscale(0%) contrast(120%);
-  }
-
   /* CONTRACT */
-  .terminal-box {
+  .contract-box {
     background: var(--void-2);
-    border: 1px solid var(--acid);
-    padding: 20px;
+    border: 2px solid var(--neon);
+    padding: 24px;
     position: relative;
-    box-shadow: 0 0 20px rgba(204,255,0,0.08);
+    box-shadow: 0 0 30px rgba(204,255,0,0.1);
   }
-  .terminal-box::before {
-    content: "root@stonkhege:~$ cat ca.txt";
-    display: block;
-    color: var(--acid);
-    font-size: 12px;
-    margin-bottom: 8px;
-    opacity: 0.7;
+  .contract-box::before {
+    content: "📋";
+    font-size: 24px;
+    position: absolute;
+    top: 16px;
+    right: 20px;
   }
   .ca-line {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: wrap;
   }
   .ca {
     font-size: 14px;
-    color: var(--txt);
+    color: #fff;
+    font-weight: 700;
     word-break: break-all;
+    font-family: 'Courier New', monospace;
+    background: #000;
+    padding: 10px 14px;
+    border: 1px solid #333;
+    flex: 1;
+    min-width: 280px;
   }
   .copy-btn {
-    background: transparent;
-    color: var(--acid);
-    border: 1px solid var(--acid);
-    padding: 8px 12px;
-    font-family: inherit;
-    cursor: pointer;
+    background: var(--neon);
+    color: #000;
+    border: none;
+    padding: 10px 18px;
+    font-weight: 900;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
+    cursor: pointer;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    transition: transform 0.15s;
   }
   .copy-btn:hover {
-    background: rgba(204,255,0,0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(204,255,0,0.4);
   }
 
-  /* LIVE CHART */
+  /* CHART PLACEHOLDER */
   .chart-frame {
-    border: 1px solid #222;
+    border: 2px solid var(--neon);
     background: var(--void-2);
-    padding: 14px;
+    padding: 24px;
+    text-align: center;
   }
   .chart-placeholder {
-    text-align: center;
-    padding: 40px 0;
-    color: #555;
+    padding: 60px 0;
+    color: #666;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 14px;
   }
 
   footer {
-    padding: 30px 0;
+    padding: 28px 0;
     text-align: center;
-    border-top: 1px solid #161616;
-    color: #555;
-    font-size: 12px;
+    border-top: 2px solid var(--neon);
+    background: linear-gradient(180deg, transparent 0%, rgba(204,255,0,0.03) 100%);
+    color: #888;
+    font-size: 13px;
     letter-spacing: 1px;
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
   }
+  footer strong { color: var(--neon); }
 
   @media (max-width: 768px) {
+    .manifesto-grid, .stats-grid, .steps, .meme-grid { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 40px 0 30px; }
+    .nav-links a { margin-left: 8px; font-size: 12px; padding: 4px 8px; }
+    .section-title { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
     .manifesto-grid, .stats-grid, .steps, .meme-grid { grid-template-columns: 1fr; }
-    .hero { padding: 50px 0 40px; }
-    .nav-links { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="container">
   <nav>
-    <div class="brand">STONKHEGECOIN</div>
+    <div class="brand">🦍 STONKHEGECOIN</div>
     <div class="nav-links">
-      <a href="https://x.com/stonkhegecoin" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://x.com/stonkhegecoin" target="_blank" rel="noopener">X</a>
       <a href="#manifesto">Manifesto</a>
       <a href="#tokenomics">Tokenomics</a>
       <a href="#buy">Buy</a>
-      <a href="#memes">Memes</a>
     </div>
   </nav>
 
   <header class="hero">
-    <img class="mascot" src="https://unavatar.io/x/stonkhegecoin" alt="STONKHEGE mascot" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23050505%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22120%22 text-anchor=%22middle%22 fill=%22%23CCFF00%22 font-family=%22monospace%22 font-size=%2220%22>STONKHEGE</text></svg>';">
-    <h1 data-text="STONKHEGECOIN">STONKHEGECOIN</h1>
-    <div class="tagline">We don't follow pumps. We are the pump.</div>
-    <p class="desc">STONKHEGECOIN is where stonk energy meets hege conviction. built for the on-chain schizo, deployed with zero overhead, and allergic to red candles.</p>
-    <div class="cta-row">
-      <a class="btn" href="#" id="buyBtn">Buy Now</a>
-      <a class="btn ghost" href="#" id="chartBtn">Live Chart ↗</a>
+    <div class="hero-badge">📈 HEGE MODE: ACTIVE</div>
+    <img class="mascot" src="https://unavatar.io/x/stonkhegecoin" alt="STONKHEGE" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23000%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22120%22 text-anchor=%22middle%22 fill=%22%23CCFF00%22 font-family=%22monospace%22 font-size=%2220%22>STONKHEGE</text></svg>';">
+    <h1>STONKHEGECOIN</h1>
+    <div class="ticker-big">$STONKHEGE</div>
+    <div class="tagline">🦍 Stonk meets hege. Green candles only. 🚀</div>
+    <p class="desc">The most based memecoin on Robinhood Chain. zero taxes, burned liquidity, pure hege energy. not financial advice, just alpha.</p>
+    <div class="socials">
+      <a class="social-btn telegram" href="https://t.me/stonkhegecoin" target="_blank">💬 Telegram</a>
+      <a class="social-btn discord" href="https://discord.gg/stonkhegecoin" target="_blank">🎮 Discord</a>
+      <a class="social-btn x" href="https://x.com/stonkhegecoin" target="_blank">𝕏 Follow</a>
+    </div>
+    <div class="cta-row" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a class="social-btn" href="#" id="buyBtn" style="background:var(--neon); color:#000;">🛒 Buy Now</a>
+      <a class="social-btn ghost" href="#" id="chartBtn" style="background:transparent; color:var(--neon); border:2px solid var(--neon);">📊 DexScreener ↗</a>
     </div>
   </header>
 
   <div class="ticker">
-    <div class="ticker-wrap" id="ticker">
-      <span>◆ STONKHEGECOIN</span>
-      <span>HEGE MODE: ACTIVE</span>
-      <span>GREEN ONLY</span>
-      <span>ZERO TAX</span>
-      <span>100% LP BURNED</span>
-      <span>NO RUG</span>
-      <span>STONKHEGE TO THE VOID</span>
-      <span>◆ STONKHEGECOIN</span>
-      <span>HEGE MODE: ACTIVE</span>
-      <span>GREEN ONLY</span>
-      <span>ZERO TAX</span>
-      <span>100% LP BURNED</span>
-      <span>NO RUG</span>
-      <span>STONKHEGE TO THE VOID</span>
+    <div class="ticker-wrap">
+      <span>◆ $STONKHEGE ◆ ZERO TAX</span>
+      <span>◆ 100% LP BURNED</span>
+      <span>◆ NO RUG</span>
+      <span>◆ STONK HE GE</span>
+      <span>◆ GREEN ONLY</span>
+      <span>◆ 🚀 🚀 🚀</span>
+      <span>◆ $STONKHEGE ◆ ZERO TAX</span>
+      <span>◆ 100% LP BURNED</span>
+      <span>◆ NO RUG</span>
+      <span>◆ STONK HE GE</span>
+      <span>◆ GREEN ONLY</span>
+      <span>◆ 🚀 🚀 🚀</span>
     </div>
   </div>
 
   <section id="manifesto">
-    <h2 class="section-title">Manifesto</h2>
-    <p class="section-sub">Not a team. Not a roadmap. Just a signal in the noise.</p>
+    <h2 class="section-title">🦍 Manifesto</h2>
+    <p class="section-sub">not a team. not a roadmap. just a movement.</p>
     <div class="manifesto-grid">
       <div class="manifesto-block">
-        <h3>STONK</h3>
-        <p>Brainrot charts, W pattern enlightenment, and the kind of conviction that only comes after staring at TradingView until 4am. This is the thesis.</p>
+        <h3>📈 STONK</h3>
+        <p>charts don't lie. W patterns, bull flags, and the kind of conviction that turns peasants into whales. this is the energy.</p>
       </div>
       <div class="manifesto-block">
-        <h3>HEGE</h3>
-        <p>Protection. Defense. The ability to not get absolutely wrecked when the market decides to be a gambling addict with no sleep. We position, we survive.</p>
+        <h3>🛡️ HEGE</h3>
+        <p>when everyone's fudding, we hedge. when everyone's paper handing, we hold. protection mode: activated. stonk + hege = invincible.</p>
       </div>
       <div class="manifesto-block">
-        <h3>COIN</h3>
-        <p>The final form. On-chain, borderless, and engineered to outlive every exchange meltdown and influencer rug. One token. One bet on chaos itself.</p>
+        <h3>💰 COIN</h3>
+        <p>on-chain. borderless. no vc's, no insiders, no presale. just degens building the future, one green candle at a time.</p>
       </div>
       <div class="manifesto-block">
-        <h3>RESULT</h3>
-        <p>STONKHEGECOIN — pure speculative energy wrapped in digital absurdity. If it pumps, we pumped. If it dumps, we hedged. There is no middle ground.</p>
+        <h3>🐸 RESULT</h3>
+        <p>stonkhegecoin — pure speculative energy wrapped in digital alpha. we're not here to replace your bank. we're here to buy it.</p>
       </div>
     </div>
   </section>
 
   <section id="memes">
-    <h2 class="section-title">Feed</h2>
-    <p class="section-sub">Visual evidence of the thesis.</p>
+    <h2 class="section-title">📸 Feed</h2>
+    <p class="section-sub">meme evidence. bring your own.</p>
     <div class="meme-grid">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege bullish">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege moon">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege aim">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege coins">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege shield">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege face">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege leap">
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege gear">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 1">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 2">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 3">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 4">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 5">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 6">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 7">
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="Hege 8">
     </div>
-    <p style="margin-top: 12px; color: #555; font-size: 12px;">[ mint real artwork later — using placeholder pfp for now ]</p>
+    <p style="margin-top: 14px; color: #666; font-size: 13px;">[ real artwork coming soon — community submissions welcome ]</p>
   </section>
 
   <section id="tokenomics">
-    <h2 class="section-title">Tokenomics</h2>
-    <p class="section-sub">Numbers don't lie. The chart does.</p>
+    <h2 class="section-title">📊 Tokenomics</h2>
+    <p class="section-sub">numbers don't lie. the chart does.</p>
     <div class="stats-grid">
-      <div class="stat">
+      <div class="stat" data-label="T">
         <div class="stat-label">Ticker</div>
         <div class="stat-value">$STONKHEGE</div>
       </div>
-      <div class="stat">
+      <div class="stat" data-label="S">
         <div class="stat-label">Total Supply</div>
         <div class="stat-value">1B</div>
         <div class="stat-meta">1,000,000,000</div>
       </div>
-      <div class="stat">
+      <div class="stat" data-label="X">
         <div class="stat-label">Tax</div>
-        <div class="stat-value">0 / 0</div>
+        <div class="stat-value">0/0</div>
         <div class="stat-meta">Buy / Sell</div>
       </div>
     </div>
-    <div class="liquidity-box">
-      <div class="stat-label" style="text-align:center;">Liquidity</div>
-      <div style="text-align:center; margin-top: 10px; color: var(--acid); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">100% BURNED</div>
-      <img src="https://unavatar.io/x/stonkhegecoin" alt="Liquidity" style="opacity: 0.6;">
+    <div class="contract-box" style="margin-top: 24px; text-align: center;">
+      <div style="color: var(--neon); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
+        🔥 100% LP BURNED
+      </div>
+      <img src="https://unavatar.io/x/stonkhegecoin" alt="LP" style="width: 100px; height: 100px; object-fit: contain; opacity: 0.5; border: 2px solid var(--neon); border-radius: 50%;">
     </div>
   </section>
 
   <section id="buy">
-    <h2 class="section-title">How to Buy</h2>
-    <p class="section-sub">Four steps to maximum brainrot gainz.</p>
+    <h2 class="section-title">🚀 How to Buy</h2>
+    <p class="section-sub">four steps to maximum hege.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <div class="step-title">Get a Wallet</div>
-        <p>Set up MetaMask or any Web3 wallet. Keep your seed phrase in a safe. Do not post it on X.</p>
+        <div class="step-title">👛 Wallet</div>
+        <p>get metamask or any web3 wallet. keep your seed phrase safu. do not send it to anyone.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <div class="step-title">Add Network</div>
-        <p>Switch to Robinhood Chain (chain id not shown here). Fund wallet with ETH for gas and swaps.</p>
+        <div class="step-title">⛓️ Network</div>
+        <p>add robinhood chain. fund wallet with eth for gas. stay ready.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <div class="step-title">Open Swap</div>
-        <p>Buy Now or hit Uniswap directly. Connect wallet and paste the official STONKHEGE contract below.</p>
+        <div class="step-title">💱 Swap</div>
+        <p>open uniswap. connect wallet. paste official $stonkhege ca. choose your size.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <div class="step-title">Swap & Survive</div>
-        <p>Choose your size, confirm the tx, and watch the candles. Green is the only acceptable color.</p>
+        <div class="step-title">🌍 Hold</div>
+        <p>confirm tx. push notifications on. green candles only. diamond hands activated.</p>
       </div>
     </div>
   </section>
 
   <section id="contract">
-    <h2 class="section-title">Contract</h2>
-    <p class="section-sub">Always verify before you ape.</p>
-    <div class="terminal-box">
+    <h2 class="section-title">📋 Contract</h2>
+    <p class="section-sub">always verify before you ape. not financial advice.</p>
+    <div class="contract-box">
       <div class="ca-line">
         <code class="ca" id="caText">YOUR_CONTRACT_ADDRESS_HERE</code>
-        <button class="copy-btn" onclick="copyCA()">Copy CA</button>
+        <button class="copy-btn" onclick="copyCA()">📋 Copy CA</button>
       </div>
     </div>
-    <div class="cta-row" style="margin-top: 20px;">
-      <a class="btn" href="#" id="buyBtn2">Buy Now</a>
-      <a class="btn ghost" href="#" id="chartBtn2">Live Chart ↗</a>
+    <div style="display:flex; gap:14px; justify-content:center; margin-top: 20px; flex-wrap:wrap;">
+      <a class="social-btn" href="#" id="buyBtn2" style="background:var(--neon); color:#000;">🛒 Buy Now</a>
+      <a class="social-btn ghost" href="#" id="chartBtn2" style="background:transparent; color:var(--neon); border:2px solid var(--neon);">📊 Chart ↗</a>
     </div>
   </section>
 
   <section id="chart">
-    <h2 class="section-title">Live Feed</h2>
-    <p class="section-sub">On-chain chart. No filters. No excuses.</p>
+    <h2 class="section-title">📈 Live Chart</h2>
+    <p class="section-sub">real-time on-chain action.</p>
     <div class="chart-frame">
       <div class="chart-placeholder" id="chartPlaceholder">
-        <div>[ DexScreener embed loads after contract is live ]</div>
-        <div style="margin-top: 8px; font-size: 12px; color: #444;">paste contract in _config or replace iframe below</div>
+        <div style="font-size: 40px; margin-bottom: 10px;">💹</div>
+        <div>[ DexScreener embed loads when CA is live ]</div>
+        <div style="margin-top: 8px; font-size: 12px; color: #444;">set CONTRACT in js to activate embed</div>
       </div>
     </div>
   </section>
 
   <footer>
-    STONKHEGECOIN ◆ X: <a href="https://x.com/stonkhegecoin" target="_blank" rel="noopener">@stonkhegecoin</a> ◆ NOT FINANCIAL ADVICE ◆ NO TAX ◆ NO RUG ◆ GREEN ONLY ◆ STONKHEGE TO THE VOID
+    <strong>STONKHEGECOIN</strong> 🦍
+    <a href="https://x.com/stonkhegecoin" target="_blank" rel="noopener">𝕏 @stonkhegecoin</a>
+    |
+    <a href="https://t.me/stonkhegecoin" target="_blank" rel="noopener">💬 Telegram</a>
+    |
+    <strong>NOT FINANCIAL ADVICE</strong> | NO TAX | NO RUG | GREEN ONLY | 🚀 TO THE VOID 🚀
   </footer>
 </div>
 
 <script>
-  // Replace placeholder CA manually or via build step before deploying
   const CONTRACT = "YOUR_CONTRACT_ADDRESS_HERE";
   const UNISWAP_URL = "https://app.uniswap.org/swap?chain=robinhood&outputCurrency=" + CONTRACT;
   const DEX_URL = "https://dexscreener.com/robinhood/" + CONTRACT;
@@ -607,14 +643,14 @@
     if (CONTRACT && CONTRACT !== "YOUR_CONTRACT_ADDRESS_HERE") {
       document.getElementById("caText").textContent = CONTRACT;
       document.getElementById("chartPlaceholder").innerHTML =
-        '<iframe src="' + DEX_URL + '" style="width:100%; height:420px; border:none; background:#0a0a0a;"></iframe>';
+        '<iframe src="' + DEX_URL + '" style="width:100%; height:460px; border:none; background:#000;"></iframe>';
     }
   }
   function copyCA() {
     const el = document.getElementById("caText");
     const text = el.textContent;
-    if (!text || text === "YOUR_CONTRACT_ADDRESS_HERE") return alert("Set contract address first.");
-    navigator.clipboard.writeText(text).then(() => alert("CA copied."));
+    if (!text || text === "YOUR_CONTRACT_ADDRESS_HERE") return alert("set contract address first.");
+    navigator.clipboard.writeText(text).then(() => alert("CA copied to clipboard 🚀"));
   }
   function bind(id, url) {
     const el = document.getElementById(id);
